@@ -2,6 +2,7 @@ import asyncio
 import streamlit as st
 from datetime import datetime
 from streamlit.components.v1 import iframe
+import hashlib
 
 st.set_page_config(layout="wide")
 
@@ -10,7 +11,10 @@ st.set_page_config(layout="wide")
 def get_starter_word() -> str:
     with open("words.csv") as fn:
         words = fn.readlines()
-    return words[hash(datetime.utcnow().date()) % len(words)].strip()
+    return words[
+        int(hashlib.sha1(datetime.utcnow().date().isoformat().encode()).hexdigest(), 16)
+        % len(words)
+    ].strip()
 
 
 async def watch():
