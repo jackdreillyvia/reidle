@@ -18,8 +18,9 @@ def get_starter_word() -> str:
 
 st.header("Reidle")
 st.text(f"Starter word: {get_starter_word()}")
-if st.button("Open Wordle"):
-    webbrowser.open_new_tab("https://www.nytimes.com/games/wordle/index.html")
+"""
+[Go To Wordle](https://www.nytimes.com/games/wordle/index.html)
+"""
 if st.button("Reset Timer"):
     timer = st.empty()
 
